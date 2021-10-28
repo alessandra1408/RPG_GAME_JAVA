@@ -2,10 +2,11 @@ package pacote01;
 
 import java.util.Scanner;
 
-public class RpgLuta{
+public class RpgLuta {
 
-    static int escolhaCaracteristicas(){
-        System.out.println("Seja bem vindo(a) à BATALHA FINAL!\n");
+    static int ataqueUsuario(){
+
+        System.out.println("Escolha o seu ataque:\n");
         System.out.println("[escolha do nível de dificuldade]\n");
         System.out.println("1, 2 ou 3");
         Scanner level = new Scanner(System.in);
@@ -30,9 +31,4 @@ public class RpgLuta{
         return 0;
     }
 
-    public static void main(String[] args) {
-        escolhaCaracteristicas();
-    }
 }
-
-
