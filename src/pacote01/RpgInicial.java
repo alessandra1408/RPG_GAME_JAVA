@@ -12,6 +12,7 @@ public class RpgInicial {
         Scanner level = new Scanner(System.in);
         int level1 = level.nextInt();
 
+
         System.out.println("[escolha o seu nick]\n");
         Scanner nick = new Scanner(System.in);
         String nick1 = nick.next();
