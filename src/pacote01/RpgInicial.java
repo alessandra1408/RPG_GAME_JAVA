@@ -4,14 +4,15 @@ import java.util.Scanner;
 
 public class RpgInicial {
 
-    static Object escolhaCaracteristicas(){
+    String[] caracteristicas;
+
+    static void escolhaCaracteristicas(){
 
         System.out.println("Seja bem vindo(a) à BATALHA FINAL!\n");
         System.out.println("[escolha do nível de dificuldade]\n");
-        System.out.println("1, 2 ou 3");
+        System.out.println("[Fácil, Normal ou Dificil]\n");
         Scanner level = new Scanner(System.in);
-        int level1 = level.nextInt();
-
+        String level1 = level.next();
 
         System.out.println("[escolha o seu nick]\n");
         Scanner nick = new Scanner(System.in);
@@ -23,31 +24,42 @@ public class RpgInicial {
         String gender1 = gender.next();
 
         System.out.println("[Escolha uma classe de combate]\n");
-        System.out.println("[1 - Arqueiro]");
-        System.out.println("[2 - Combatente]");
-        System.out.println("[3 - Cavaleiro]");
+        System.out.println("[Arqueiro]");
+        System.out.println("[Combatente]");
+        System.out.println("[Cavaleiro]\n");
         Scanner classe = new Scanner(System.in);
-        int classe1 = classe.nextInt();
-        String classePersonagem = "";
+        String classePersonagem = classe.next();
 
-        if (classe1 == 1){
-            return classePersonagem = "Arqueiro";
+        Scanner arma = new Scanner(System.in);
+        int numeroArma = arma.nextInt();
+        String arma1 = "";
+
+        String[] caracteristicas = {level1, nick1, gender1, classePersonagem, arma1};
+
+
+        System.out.println("[Escolha suas armas]\n");
+
+        if (classePersonagem.equals("arqueiro")){
+            System.out.println("1 - [Arco e Flexa]");
+            System.out.println("2 - [Lança]");
+            System.out.println("3 - [Besteiro]");
+            if (numeroArma == 1){
+                arma1 = "Arco e Flexa";
+            }
+            System.out.println("Arma: " + caracteristicas[4]);
+            System.out.println("=================\n");
+
         }
-        else if (classe1 == 2){
-            return classePersonagem = "Combatente";
-        }
-        else if (classe1 == 3){
-            return classePersonagem = "Cavaleiro";
+        else {
+            System.out.println("Opcao invalida");
         }
 
         System.out.println("=================");
-        System.out.println("Nível: " + level1);
-        System.out.println("Nick: " + nick1);
-        System.out.println("Gênero: " + gender1);
-        System.out.println("Classe: " + classePersonagem);
-        System.out.println("=================");
+        System.out.println("Nível: " + caracteristicas[0]);
+        System.out.println("Nick: " + caracteristicas[1]);
+        System.out.println("Gênero: " + caracteristicas[2]);
+        System.out.println("Classe: " + caracteristicas[3]);
 
-        return 0;
     }
 
     public static void main(String[] args) {
