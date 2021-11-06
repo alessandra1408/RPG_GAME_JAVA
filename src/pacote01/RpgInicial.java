@@ -18,11 +18,10 @@ public class RpgInicial {
 
     static void escolhaCaracteristicas(String[] caracteristicas) {
 
-        System.out.println("Seja bem vindo(a) à BATALHA FINAL!\n");
+        //transformar os sout do código neste formato
+        System.out.println("Seja bem vindo(a) à BATALHA FINAL!\t");
         System.out.println("[escolha do nível de dificuldade]\n");
-        System.out.println("[1 - Fácil]");
-        System.out.println("[2 - Normal]");
-        System.out.println("[3 - Difícil]");
+        System.out.println("[1 - Fácil]\t [2 - Normal]\t [3 - Difícil]");
 
         Scanner level = new Scanner(System.in);
         int numeroLevel = level.nextInt();
@@ -135,12 +134,12 @@ public class RpgInicial {
 
         imprimeCaracteristicas(caracteristicas);
         new Thread();
-        Thread.sleep(2000);
+        Thread.sleep(3000);
 
-        roteiro(caracteristicas, numeroClasse);
+        roteiro(caracteristicas);
     }
 
-    static void roteiro(String[] caracteristicas, int numeroClasse){
+    static void roteiro(String[] caracteristicas){
 
         System.out.println("""
                 A noite se aproxima, a lua já surge no céu, estrelas vão se acendendo,
@@ -152,10 +151,13 @@ public class RpgInicial {
                 Memórias do caminho percorrido para chegar até aqui invadem sua mente. Você se lembra de todos os
                 inimigos já derrotados para alcançar o covil do líder maligno. Olha para seu equipamento de combate,
                 já danificado e desgastado depois de tantas lutas. Você está a um passo de encerrar para sempre
-                esse mal.""");
+                esse mal.
+                """);
 
-        System.out.println("Buscando uma injeção de ânimo, você se força a lembrar o que te trouxe até aqui.\n" +
-                "[Escolha sua motivação para invadir a caverna do inimigo e derrotá-lo:\n");
+        System.out.println("""
+                Buscando uma injeção de ânimo, você se força a lembrar o que te trouxe até aqui.
+                [Escolha sua motivação para invadir a caverna do inimigo e derrotá-lo:
+                """);
 
         System.out.println("1 - [VINGANÇA]");
         System.out.println("2 - [GLÓRIA]");
@@ -172,7 +174,8 @@ public class RpgInicial {
                     combustível que te fizeram chegar até aqui. E você sabe que não irá desistir até ter
                     vingado a morte daqueles que foram - e pra sempre serão - sua fonte de amor e desejo de
                     continuar vivo. O maldito líder finalmente pagará por tanto mal causado na vida de tantos
-                    (e principalmente na sua)""");
+                    (e principalmente na sua)
+                    """);
         } else if (numeroMotivacao == 2) {
             caracteristicas[5] = "GLÓRIA";
             System.out.println("""
@@ -182,7 +185,8 @@ public class RpgInicial {
                     comilanças. Desde já, você sente o amor do público, te louvando a cada passo que dá
                     pelas ruas, depois de destruir o vilão que tanto assombrou a paz de todos. Porém, você
                     sabe que ainda falta o último ato dessa história. Você se concentra na missão. A glória o
-                    aguarda, mas não antes da última batalha.""");
+                    aguarda, mas não antes da última batalha.
+                    """);
         } else {
             System.out.println("Opção inválida");
         }
@@ -190,12 +194,14 @@ public class RpgInicial {
         System.out.println("""
                 Inspirado pelo motivo que te trouxe até aqui, você sente seu coração ardendo em chamas,
                 suas mãos formigarem em volta da sua arma. Você a segura com firmeza. Seu foco está
-                renovado. Você avança pelo portal.""");
+                renovado. Você avança pelo portal.
+                """);
 
         System.out.println("""
                 A escuridão te envolve. Uma iluminação muito fraca entra pelo portal às suas costas. À sua frente, só
                 é possível perceber que você se encontra em um corredor extenso. Você só pode ir à frente, ou
-                desistir.""");
+                desistir.
+                """);
 
         System.out.println("1 - [SEGUIR]");
         System.out.println("2 - [DESISTIR]");
@@ -207,31 +213,78 @@ public class RpgInicial {
             caracteristicas[6] = "SEGUIR";
             System.out.println("""
                     você caminha, atento a todos os seus sentidos, por vários metros, até visualizar a frente uma
-                    fonte de luz, que você imagina ser a chama de uma tocha, vindo de dentro de uma porta aberta.""");
+                    fonte de luz, que você imagina ser a chama de uma tocha, vindo de dentro de uma porta aberta.
+                    """);
         } else if (numeroRumo == 2) {
             caracteristicas[6] = "DESISTIR";
             System.out.println("""
                     o medo invade o seu coração e você sente que ainda não está à altura do desafio. Você se volta
-                    para a noite lá fora e corre em direção à segurança.""");
+                    para a noite lá fora e corre em direção à segurança.
+                    """);
+            //aqui eu tenho que finalizar o processo
 
         } else {
             System.out.println("Opção inválida");
         }
 
-        System.out.println("!!!Por enquanto ta bom!!!");
+        System.out.println("""
+                Você se pergunta se dentro dessa sala pode haver inimigos, ou alguma armadilha, e pondera sobre como
+                passar pela porta.
+                                                
+                [andando cuidadosamente, correndo, saltando]
+                """);
 
+        System.out.println("1 - [SALTANDO]");
+        System.out.println("2 - [ANDANDO]");
+        System.out.println("2 - [CORRENDO]");
+
+        Scanner movimento = new Scanner(System.in);
+        int numeroMovimento = movimento.nextInt();
+
+        if (numeroMovimento == 1) {
+            caracteristicas[7] = "SALTANDO";
+            System.out.println("""
+                    Você se concentra e pula em direção à luz, saltando de antes da porta até o interior da sala.
+                    """);
+        } else if (numeroMovimento == 2) {
+            caracteristicas[7] = "ANDANDO";
+            System.out.println("""
+                    Você toma cuidado e vai caminhando vagarosamente em direção à luz. Quando você pisa exatamente
+                    embaixo da porta, você sente o chão ceder levemente, como se tivesse pisado em uma pedra solta.
+                    Você ouve um ruído de mecanismos se movimentando, e uma escotilha se abre no teto atrás de você,
+                    no corredor. Flechas voam da escotilha em sua direção, e você salta para dentro da sala, porém
+                    uma delas te acerta na perna. [toma dano utilizando mecanismo de ataque descrito abaixo, porém o
+                    rolamento de dados é só de 1-10]
+                    """);
+
+        } else if (numeroMovimento == 3) {
+            caracteristicas[7] = "CORRENDO";
+            System.out.println("""
+                    Você respira fundo e desata a correr em direção à sala. Quando passa pela porta, sente que pisou
+                    em uma pedra solta, mas não dá muita importância e segue para dentro da sala, olhando ao redor à
+                    procura de inimigos. Não tem ninguém, mas você ouve sons de flechas batendo na pedra atrás de
+                    você, e quando se vira, vê várias flechas no chão. Espiando pela porta, você entende que pisou em
+                    uma armadilha que soltou flechas de uma escotilha aberta no teto, mas por sorte você entrou
+                    correndo e conseguiu escapar desse ataque surpresa.
+                    """);
+        } else {
+            System.out.println("Opção inválida");
+        }
+
+        System.out.println("""
+                Você se encontra sozinho em uma sala quadrada, contendo uma porta em cada parede. Uma delas foi
+                aquela pela qual você entrou, que estava aberta, e as outras três estão fechadas. A porta à sua
+                frente é a maior das quatro, com inscrições em seu entorno em uma língua que você não sabe ler, mas
+                reconhece como sendo a língua antiga utilizada pelo inimigo. Você se aproxima da porta e percebe que
+                ela está trancada por duas fechaduras douradas, e você entende que precisará primeiro derrotar o que
+                estiver nas outras duas portas laterais, antes de conseguir enfrentar o líder.
+                """);
+        System.out.println("Você se dirige para a porta à direita.\n");
     }
 
     public static void main(String[] args) throws InterruptedException {
-        String levelPersonagem = "";
-        String nickPersonagem = "";
-        String generoPersonagem = "";
-        String classePersonagem = "";
-        String armaPersonagem = "";
-        String motivacaoPersonagem = "";
-        String rumoPersonagem = "";
 
-        String[] caracteristicas = {levelPersonagem, nickPersonagem, generoPersonagem, classePersonagem, armaPersonagem, motivacaoPersonagem, rumoPersonagem};
+        String[] caracteristicas = new String[10];
 
         escolhaCaracteristicas(caracteristicas);
         escolheClasse(caracteristicas);
