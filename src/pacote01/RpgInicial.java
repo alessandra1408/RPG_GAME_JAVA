@@ -4,6 +4,7 @@ import java.util.Scanner;
 
 public class RpgInicial {
 
+
     static void imprimeCaracteristicas(String[] caracteristicas) {
 
         System.out.println("=================");
@@ -58,6 +59,10 @@ public class RpgInicial {
         } else {
             System.out.println("Opção inválida");
         }
+    }
+
+    static void escolhasRoteiro(){
+
     }
 
     static void escolheClasse(String[] caracteristicas) throws InterruptedException {
