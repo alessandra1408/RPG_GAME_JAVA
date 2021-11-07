@@ -30,63 +30,135 @@ public class Roteiro {
                 "Motivacao: " + escolha.getMotivacao() + "\n");
     }
 
-    public static void defineCaracteristicas(Personagem jogador) {
+    public static void defineCaracteristicas(Personagem jogador) throws InterruptedException {
 
         String nome;
-        String genero;
-        String dificuldade;
-        String classe;
-        String arma;
+        String genero = " ";
+        String dificuldade = " ";
+        String classe = " ";
+        String arma = " ";
         Scanner entrada = new Scanner(System.in);
 
         System.out.println("Seja bem vindo(a) à BATALHA FINAL!\t");
 
-        System.out.print("Qual o seu gênero?: ");
-        genero = entrada.nextLine();
+        jogador.setVida(100);
+        jogador.setDano(10);
+
+        pausaDramatica();
+        System.out.print("Qual o seu gênero?: \n");
+
+        while(genero.charAt(0) != 'f' && genero.charAt(0) != 'm' && genero.charAt(0) != 'o'){
+            System.out.println("'f' para [Feminino]");
+            System.out.println("'m' para [Masculino]");
+            System.out.println("'o' para [Outro]");
+            genero = entrada.nextLine();
+        }
+        if(genero.charAt(0) == 'f'){
+            jogador.setGenero("Feminino");
+        }
+        else if(genero.charAt(0) == 'm'){
+            jogador.setGenero("Masculino");
+        }
+        else if(genero.charAt(0) == 'o'){
+            jogador.setGenero("Outro");
+        }
 
         System.out.print("Digite o seu nome: ");
         nome = entrada.nextLine();
+        jogador.setName(nome);
 
         System.out.println("[escolha do nível de dificuldade]\n");
-        System.out.println("[1 - Fácil]\t [2 - Normal]\t [3 - Difícil]\n");
-        dificuldade = entrada.nextLine();
+
+        while(dificuldade.charAt(0) != 'f' && dificuldade.charAt(0) != 'n' && dificuldade.charAt(0) != 'd'){
+            System.out.println("'f' para [Fácil]");
+            System.out.println("'n' para [Normal]");
+            System.out.println("'d' para [Difícil]");
+            dificuldade = entrada.nextLine();
+        }
+        if(dificuldade.charAt(0) == 'f'){
+            jogador.setDificuldade("Fácil");
+        }
+        else if(dificuldade.charAt(0) == 'm'){
+            jogador.setDificuldade("Normal");
+        }
+        else if(dificuldade.charAt(0) == 'o'){
+            jogador.setDificuldade("Difícil");
+        }
 
         System.out.println("[Escolha uma classe de combate]\n");
-        System.out.println("[1 - Arqueiro]");
-        System.out.println("[2 - Combatente]");
-        System.out.println("[3 - Cavaleiro]");
-        classe = entrada.nextLine();
 
-        jogador.setName(nome);
-        jogador.setGenero(genero);
-        jogador.setVida(100);
-        jogador.setDificuldade(dificuldade);
-        jogador.setClasse(classe);
-        jogador.setDano(10);
+        while(classe.charAt(0) != 'a' && classe.charAt(0) != 'c' && classe.charAt(0) != 'v'){
+            System.out.println("'a' para Arqueiro");
+            System.out.println("'c' para Combatente");
+            System.out.println("'v' para Cavaleiro");
+            classe = entrada.nextLine();
+        }
+        if(classe.charAt(0) == 'a'){
+            jogador.setClasse("arqueiro");
+        }
+        else if(classe.charAt(0) == 'c'){
+            jogador.setClasse("combatente");
+        }
+        else if(classe.charAt(0) == 'v'){
+            jogador.setClasse("cavaleiro");
+        }
 
         System.out.println("[Escolha suas armas]\n");
 
         switch (jogador.getClasse()) {
             case "arqueiro" -> {
-                System.out.println("1 - [Arco e Flexa]");
-                System.out.println("2 - [Lança]");
-                System.out.println("3 - [Besteiro]");
-                arma = entrada.nextLine();
-                jogador.setArma(arma);
+
+                while(arma.charAt(0) != 'a' && arma.charAt(0) != 'l' && arma.charAt(0) != 'b'){
+                    System.out.println("'a' para Arco e Flexa");
+                    System.out.println("'l' para Lança");
+                    System.out.println("'b' para Besteiro");
+                    arma = entrada.nextLine();
+                }
+                if(arma.charAt(0) == 'a'){
+                    jogador.setArma("Arco e Flexa");
+                }
+                else if(arma.charAt(0) == 'l'){
+                    jogador.setArma("Lança");
+                }
+                else if(arma.charAt(0) == 'b'){
+                    jogador.setArma("Besteiro");
+                }
             }
             case "combatente" -> {
-                System.out.println("1 - [Espada]");
-                System.out.println("2 - [Machadinho]");
-                System.out.println("3 - [Punhal]");
-                arma = entrada.nextLine();
-                jogador.setArma(arma);
+
+                while(arma.charAt(0) != 'e' && arma.charAt(0) != 'm' && arma.charAt(0) != 'p'){
+                    System.out.println("'e' para [Espada]");
+                    System.out.println("'m' para [Machadinho]");
+                    System.out.println("'p' para [Punhal]");
+                    arma = entrada.nextLine();
+                }
+                if(arma.charAt(0) == 'e'){
+                    jogador.setArma("Espada");
+                }
+                else if(arma.charAt(0) == 'm'){
+                    jogador.setArma("Machadinho");
+                }
+                else if(arma.charAt(0) == 'p'){
+                    jogador.setArma("Punhal");
+                }
             }
             case "cavaleiro" -> {
-                System.out.println("1 - [Lança]");
-                System.out.println("2 - [Espada]");
-                System.out.println("3 - [Mangual]");
-                arma = entrada.nextLine();
-                jogador.setArma(arma);
+
+                while(arma.charAt(0) != 'l' && arma.charAt(0) != 'm' && arma.charAt(0) != 'g'){
+                    System.out.println("'l' para [Lança]");
+                    System.out.println("'m' para [Espada]");
+                    System.out.println("'g' para [Mangual]");
+                    arma = entrada.nextLine();
+                }
+                if(arma.charAt(0) == 'l'){
+                    jogador.setArma("Lança");
+                }
+                else if(arma.charAt(0) == 'e'){
+                    jogador.setArma("Espada");
+                }
+                else if(arma.charAt(0) == 'g'){
+                    jogador.setArma("Mangual");
+                }
             }
         }
     }
@@ -107,8 +179,8 @@ public class Roteiro {
 
         Scanner entrada = new Scanner(System.in);
 
-        String motivacao;
-        String continuar;
+        String motivacao = " ";
+        String continuar = " ";
         String movimento;
 
         System.out.println("""
@@ -131,6 +203,22 @@ public class Roteiro {
 
         System.out.println("1 - [VINGANÇA]");
         System.out.println("2 - [GLÓRIA]");
+
+        while(motivacao.charAt(0) != 'f' && motivacao.charAt(0) != 'm' && motivacao.charAt(0) != 'o'){
+            System.out.println("'f' para [Feminino]");
+            System.out.println("'m' para [Masculino]");
+            System.out.println("'o' para [Outro]");
+            motivacao = entrada.nextLine();
+        }
+        if(motivacao.charAt(0) == 'f'){
+            jogador.setGenero("Feminino");
+        }
+        else if(motivacao.charAt(0) == 'm'){
+            jogador.setGenero("Masculino");
+        }
+        else if(motivacao.charAt(0) == 'o'){
+            jogador.setGenero("Outro");
+        }
 
         motivacao = entrada.next();
         escolha.setMotivacao(motivacao);
@@ -264,6 +352,11 @@ public class Roteiro {
                 de armadura, cajado em punho, em posição de combate. Ele avança em sua direção.
                 """);
         }
+
+        //Aqui devo entrar em modo combate
+        System.out.println("\n!!! Em combate !!!\n");
+
+
     }
 
     public static boolean paraOuContinua(Escolhas escolha){
