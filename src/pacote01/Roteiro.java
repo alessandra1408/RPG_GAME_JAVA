@@ -223,16 +223,25 @@ public class Roteiro {
     }
 
     private static void gameover(Personagem jogador, Escolhas escolha) {
-        System.out.println(jogador.getName() +" voce está morto!") ;
+
         System.out.println("Você não estava preparado para a força do inimigo. ");
+
         if(escolha.getMotivacao().equals("Vingança")){
+            if (jogador.getGenero().equals("Feminino")){
+                System.out.println(jogador.getName() +" voce está morta!") ;
+            }
+            else {
+                System.out.println(jogador.getName() +" voce está morto!") ;
+            }
             System.out.println("Não foi possível concluir sua vingança, e agora resta saber se alguém se vingará por você.");
         }
         else{
             if (jogador.getGenero().equals("Feminino")){
+                System.out.println(jogador.getName() +" voce está morta!") ;
                 System.out.println("A glória que buscavas não será sua, e a cidade aguarda por sua próxima heróina.");
             }
             else {
+                System.out.println(jogador.getName() +" voce está morto!") ;
                 System.out.println("A glória que buscavas não será sua, e a cidade aguarda por seu próximo herói.");
             }
 
