@@ -90,10 +90,10 @@ public class Roteiro {
         if(dificuldade.charAt(0) == 'f'){
             jogador.setDificuldade("Fácil");
         }
-        else if(dificuldade.charAt(0) == 'm'){
+        else if(dificuldade.charAt(0) == 'n'){
             jogador.setDificuldade("Normal");
         }
-        else if(dificuldade.charAt(0) == 'o'){
+        else if(dificuldade.charAt(0) == 'd'){
             jogador.setDificuldade("Difícil");
         }
 
@@ -158,7 +158,7 @@ public class Roteiro {
 
                 while(arma.charAt(0) != 'l' && arma.charAt(0) != 'm' && arma.charAt(0) != 'g'){
                     System.out.println("'l' para [Lança]");
-                    System.out.println("'m' para [Espada]");
+                    System.out.println("'e' para [Espada]");
                     System.out.println("'g' para [Mangual]");
                     arma = entrada.nextLine();
                 }
@@ -187,7 +187,7 @@ public class Roteiro {
         return dados;
     }
 
-    public static int dados(int valor, int tempo) throws InterruptedException{
+    public static int dados(int valor, int tempo) {
         Random gerador = new Random();
 
         return gerador.nextInt(valor) + 1;
@@ -211,6 +211,7 @@ public class Roteiro {
                     o medo invade o seu coração e você sente que ainda não está à altura do desafio. Você se volta
                     para a noite lá fora e corre em direção à segurança.
                     """);
+
 
                     return false;
                 }
@@ -334,6 +335,7 @@ public class Roteiro {
             action = entrada.nextLine();
             if(action.charAt(0) == 'a'){
                 fighting = attack(jogador, enemy);
+                pausa(1);
                 if (fighting){
                     enemyattack(jogador, enemy, escolha);
                 }
@@ -448,6 +450,7 @@ public class Roteiro {
         }
         else if(continuar.charAt(0) == 'd'){
             escolha.setContinuar("desistir");
+            System.out.println();
         }
 
         //se der tempo, tenho que transformar esses while e if em uma funcao padrao
@@ -498,7 +501,8 @@ public class Roteiro {
                     rolamento de dados é só de 1-10]""");
 
                     pausaDramatica(2);
-                    jogador.setVida(giraDados(10, 2));
+                    int vidaJogador = jogador.getVida() - giraDados(10, 2);
+                    jogador.setVida(vidaJogador);
 
                 }
                 case "Correndo" -> {
@@ -539,12 +543,10 @@ public class Roteiro {
                 No fundo da sala, olhando em sua direção, está outro dos capitães do inimigo. Um orque horrendo,
                 de armadura, cajado em punho, em posição de combate. Ele avança em sua direção.
                 """);
+            System.out.println("\n!!! Em combate !!!\n");
+
+            fight(entrada, jogador, enemy, escolha);
         }
-
-        System.out.println("\n!!! Em combate !!!\n");
-
-        fight(entrada, jogador, enemy, escolha);
-
     }
 
     public static void main(String[] args) throws InterruptedException {
