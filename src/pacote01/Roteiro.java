@@ -279,7 +279,8 @@ public class Roteiro {
         }
 
         if(enemy.getVida() <= 0){
-            System.out.println(" !!! Você Ganhou !!!");
+            System.out.println(" !!! Você Ganhou !!!\n");
+            System.out.println("O inimigo não é páreo para o seu heroísmo, e jaz imóvel aos seus pés.");
             return false;
         } else{
             imprimeCaracteristicasEnemy(enemy);
@@ -340,7 +341,7 @@ public class Roteiro {
             if(action.charAt(0) == 'f'){
                 imprimeCaracteristicas(jogador);
                 imprimeCaracteristicasEnemy(enemy);
-                System.out.println("Você fugiu");
+                System.out.println("Você não estava preparado para a força do inimigo, e decide fugir para que possa tentar novamente em uma próxima vez.");
                 fighting = false;
             }
         }
@@ -560,7 +561,7 @@ public class Roteiro {
         jogador.setDefesa(30);
 
         enemy.setVida(50);
-        enemy.setDano(150);
+        enemy.setDano(30);
         enemy.setDefesa(10);
 
         roteiro(jogador, enemy, escolha);
