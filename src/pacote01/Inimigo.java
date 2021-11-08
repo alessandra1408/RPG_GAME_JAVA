@@ -1,6 +1,6 @@
 package pacote01;
 
-public class Inimigo {
+class Inimigo {
 
     public int vida;
     public int dano;

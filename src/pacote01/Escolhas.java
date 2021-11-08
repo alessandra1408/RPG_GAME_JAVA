@@ -1,6 +1,6 @@
 package pacote01;
 
-public class Escolhas {
+class Escolhas {
 
     private String motivacao;
     private String continuar;
