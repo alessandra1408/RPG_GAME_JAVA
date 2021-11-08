@@ -5,6 +5,8 @@ import java.util.Random;
 
 public class Roteiro {
 
+    //tentar por o código em inglês
+
     public static void imprimePesonagemCompleto(Personagem jogador) {
 
         System.out.println("\n" +
@@ -56,7 +58,7 @@ public class Roteiro {
         jogador.setDano(20);
         jogador.setDefesa(30);
 
-        pausa(1);
+        stop(1);
         System.out.print("Qual o seu gênero?: \n");
 
         while(genero.charAt(0) != 'f' && genero.charAt(0) != 'm' && genero.charAt(0) != 'o'){
@@ -179,7 +181,7 @@ public class Roteiro {
         Random gerador = new Random();
 
         System.out.println("Jogando os dados");
-        pausaDramatica(tempo);
+        dramaticPause(tempo);
         int dados = gerador.nextInt(valor) + 1;
 
         System.out.println("Você tomou um dano de " + dados + " pontos de vida\n");
@@ -193,7 +195,7 @@ public class Roteiro {
         return gerador.nextInt(valor) + 1;
     }
 
-    public static boolean paraOuContinua(Escolhas escolha){
+    public static boolean stopOrContinue(Escolhas escolha){
 
         while(true){
             switch (escolha.getContinuar()) {
@@ -335,7 +337,7 @@ public class Roteiro {
             action = entrada.nextLine();
             if(action.charAt(0) == 'a'){
                 fighting = attack(jogador, enemy);
-                pausa(1);
+                stop(1);
                 if (fighting){
                     enemyattack(jogador, enemy, escolha);
                 }
@@ -349,12 +351,12 @@ public class Roteiro {
         }
     }
 
-    public static void pausa(int valor) throws InterruptedException {
+    public static void stop(int valor) throws InterruptedException {
         valor = valor * 1000;
         Thread.sleep(valor);
     }
 
-    public static void pausaDramatica(int valor) throws InterruptedException {
+    public static void dramaticPause(int valor) throws InterruptedException {
         valor = valor * 1000;
         Thread.sleep((valor));
         System.out.println("...");
@@ -455,7 +457,7 @@ public class Roteiro {
 
         //se der tempo, tenho que transformar esses while e if em uma funcao padrao
 
-        if (paraOuContinua(escolha)){
+        if (stopOrContinue(escolha)){
             System.out.println("""
                 Você se pergunta se dentro dessa sala pode haver inimigos, ou alguma armadilha, e pondera sobre como
                 passar pela porta.
@@ -500,7 +502,7 @@ public class Roteiro {
                     [toma dano utilizando mecanismo de ataque descrito abaixo, porém o
                     rolamento de dados é só de 1-10]""");
 
-                    pausaDramatica(2);
+                    dramaticPause(2);
                     int vidaJogador = jogador.getVida() - giraDados(10, 2);
                     jogador.setVida(vidaJogador);
 
@@ -556,7 +558,7 @@ public class Roteiro {
 
         defineCaracteristicas(jogador);
         imprimePesonagemCompleto(jogador);
-        pausaDramatica(3);
+        dramaticPause(3);
 
         jogador.setVida(100);
         jogador.setDano(30);
