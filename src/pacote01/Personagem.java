@@ -2,13 +2,14 @@ package pacote01;
 
 public class Personagem {
 
-    private int vida;
-    private int dano;
-    private String nome;
-    private String genero;
-    private String dificuldade;
-    private String classe;
-    private String arma;
+    public int vida;
+    public int dano;
+    public int defesa;
+    public String nome;
+    public String genero;
+    public String dificuldade;
+    public String classe;
+    public String arma;
 
 
     public void setVida(int vida) {
@@ -17,6 +18,10 @@ public class Personagem {
 
     public void setDano(int dano) {
         this.dano = dano;
+    }
+
+    public void setDefesa(int defesa) {
+        this.defesa = defesa;
     }
 
     public void setName(String nome) {
@@ -45,6 +50,10 @@ public class Personagem {
 
     public int getDano() {
         return this.dano;
+    }
+
+    public int getDefesa() {
+        return this.defesa;
     }
 
     public String getName() {
