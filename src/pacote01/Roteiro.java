@@ -182,7 +182,7 @@ public class Roteiro {
         pausaDramatica(tempo);
         int dados = gerador.nextInt(valor) + 1;
 
-        System.out.println("Você tomou um dano de " + dados + " pontos de vida");
+        System.out.println("Você tomou um dano de " + dados + " pontos de vida\n");
 
         return dados;
     }
@@ -222,8 +222,21 @@ public class Roteiro {
 
     }
 
-    private static void gameover() {
-        System.out.println("Fulano voce está morto!") ;
+    private static void gameover(Personagem jogador, Escolhas escolha) {
+        System.out.println(jogador.getName() +" voce está morto!") ;
+        System.out.println("Você não estava preparado para a força do inimigo. ");
+        if(escolha.getMotivacao().equals("Vingança")){
+            System.out.println("Não foi possível concluir sua vingança, e agora resta saber se alguém se vingará por você.");
+        }
+        else{
+            if (jogador.getGenero().equals("Feminino")){
+                System.out.println("A glória que buscavas não será sua, e a cidade aguarda por sua próxima heróina.");
+            }
+            else {
+                System.out.println("A glória que buscavas não será sua, e a cidade aguarda por seu próximo herói.");
+            }
+
+        }
         System.out.println("GAME OVER!");
         System.exit(0);
     }
@@ -266,7 +279,7 @@ public class Roteiro {
         return true;
     }
 
-    private static void enemyattack(Personagem jogador, Inimigo enemy) throws InterruptedException {
+    private static void enemyattack(Personagem jogador, Inimigo enemy, Escolhas escolha) throws InterruptedException {
 
         System.out.println("O inimigo Atacou!\n");
         int defesaJogador;
@@ -297,12 +310,12 @@ public class Roteiro {
             System.out.println("Vez do inimigo!\n");
         }
         else {
-            gameover();
+            gameover(jogador, escolha);
         }
 
     }
 
-    private static void fight(Scanner entrada, Personagem jogador, Inimigo enemy) throws InterruptedException {
+    private static void fight(Scanner entrada, Personagem jogador, Inimigo enemy, Escolhas escolha) throws InterruptedException {
         String action;
         System.out.println("O inimigo se aproximou");
         boolean fighting = true;
@@ -312,7 +325,7 @@ public class Roteiro {
             if(action.charAt(0) == 'a'){
                 fighting = attack(jogador, enemy);
                 if (fighting){
-                    enemyattack(jogador, enemy);
+                    enemyattack(jogador, enemy, escolha);
                 }
             }
             if(action.charAt(0) == 'f'){
@@ -520,7 +533,7 @@ public class Roteiro {
 
         System.out.println("\n!!! Em combate !!!\n");
 
-        fight(entrada, jogador, enemy);
+        fight(entrada, jogador, enemy, escolha);
 
     }
 
@@ -538,7 +551,7 @@ public class Roteiro {
         jogador.setDefesa(30);
 
         enemy.setVida(50);
-        enemy.setDano(30);
+        enemy.setDano(150);
         enemy.setDefesa(10);
 
         roteiro(jogador, enemy, escolha);
